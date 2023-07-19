@@ -1,1 +1,5 @@
-<h1>user index</h1>
+<div class="users">
+    <% @users.each do |user| %>
+        <%= render 'shared/user', user: user %>
+    <% end %>
+</div>

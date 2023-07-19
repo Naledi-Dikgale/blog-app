@@ -1,0 +1,15 @@
+<div class="post">
+  <%=link_to user_post_path(user, post) do %>
+    <div class="post-title">
+      <h1><%= post.title %></h1>
+    </div>
+    <div class="">
+      <p><%= post.text %></p>
+    </div>
+    <div class="interactions">
+      <p>comments: <%= post.comments_counter %></p>
+      <p>likes: <%= post.likes_counter %></p>
+    </div>
+  <% end %>
+</div>
+  
