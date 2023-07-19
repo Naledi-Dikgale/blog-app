@@ -1,1 +1,24 @@
-<h1>show post</h1>
+<div class="posts-show">
+  <div class="post-show">
+  
+    <div class="post-title-show">
+      <h1><%= @post.title %></h1>
+
+      <div class="post-interact">
+        <p>comments: <%= @post.comments_counter %></p>
+        <p>likes: <%= @post.likes_counter %></p>
+      </div>
+    </div>
+
+    <div>
+      <p><%= @post.text %></p>
+    </div>
+    
+  </div>
+
+  <div class="">
+    <h2>Comments</h2>
+    <%= render "shared/comments", comments:@comments %>
+  </div>
+
+</div>

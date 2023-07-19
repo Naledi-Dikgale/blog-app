@@ -1,1 +1,12 @@
-<h1>show user</h1>
+<div class="show-page">
+    <div class="users"> 
+        <%= render 'shared/user', user:@user %>
+    </div>
+    <div class="posts">
+        <h2>Recent Posts</h2>
+        <% @recent_posts.each do |post| %>
+            <%= render 'shared/post', post:post, user:@user %>
+        <% end %>
+    </div>
+    <%=link_to 'See all posts', user_posts_path(@user) %>
+</div>
