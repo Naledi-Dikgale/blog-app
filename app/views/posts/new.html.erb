@@ -1,0 +1,20 @@
+<div>
+  <h2>Create a post</h2>
+
+  <%= form_with model: @post, url: user_posts_path(@user) do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title, required: true %>
+    </div>
+
+    <div>
+      <%= f.label :text %>
+      <%= f.text_field :text, required: true %>
+    </div>
+
+    <div>
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+
+</div>
