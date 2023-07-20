@@ -4,21 +4,26 @@
   </div>
 
   <div class="posts">
-      <h2>All Posts</h2>
-      <% @posts.each do |post| %>
-          <%= render 'shared/post', post:post, user:@user %>
-          <div class="">
-          <%= link_to "Add Comment", new_user_post_comment_path(@user, post) %>
-      <%= form_with url: user_post_likes_path(post.author.id, post.id) do |form| %>
-        <%= form.submit 'Like' %>
-      <% end %>
-    </div>
-      <% if post.last_five_comments.present? %>
-      <div class="">
-        <% post.last_five_comments.each do |comment| %>
-  </div>
-  <% end %>
+    <h2>All Posts</h2>
 
+    <%=link_to "Add post", new_user_post_path(@user)%>
+
+    <% @posts.each do |post| %>
+      <%= render 'shared/post', post:post, user:@user %>
+
+      <div class="">
+        <%= link_to "Add Comment", new_user_post_comment_path(@user, post) %>
+        <%= form_with url: user_post_likes_path(post.author.id, post.id) do |form| %>
+          <%= form.submit 'Like' %>
+        <% end %>
+      </div>
+
+      <% if post.five_most_recent_comments.present? %>
+        <% comments=post.five_most_recent_comments %>
+        <%= render 'shared/comments', comments:comments %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 

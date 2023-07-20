@@ -6,13 +6,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @comment = Comment.new(comment_params)
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-    @comment.post = @post
-    @comment.author = current_user
+    @comment = @post.comments.new(comment_params)
+    @comment.author = @user
     if @comment.save
-      redirect_to user_post_path(@user), notice: 'Comment created!'
+      redirect_to user_post_path(@user, @post), notice: 'Comment created!'
     else
       flash.now[:errors] = 'Invalid comment!'
       render :new
