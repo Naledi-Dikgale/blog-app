@@ -1,9 +1,7 @@
 <%= form_with model: [@user, @post, @comment], url: user_post_comments_path do |f| %>
-  <div>
+  <div class= "add-comment">
     <%= f.label :text, required: true %>
     <%= f.text_field :text, required: true %>
-  </div>
-  <div>
     <%= f.submit "Submit" %>
   </div>
 <% end %>
