@@ -140,6 +140,12 @@ To run tests, run the following command:
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/naledi-dikgale-068423159/)
 - Website: https://naledi-dikgale.github.io/mobile-portfolio/
 
+👤 **Author2**
+  *[Lugard Agu]*
+  
+- GitHub: [@lugard1](https://github.com/lugard1)
+- Twitter: [@Dsn3kings](https://twitter.com/Dsn3kings)
+- LinkedIn: [@LugardAgu](https://www.linkedin.com/in/lugardagu)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
