@@ -1,37 +1,27 @@
 require 'rails_helper'
-
-RSpec.describe UsersController, type: :request do
-  context 'GET /index' do
-    it 'returns http success' do
-      get '/users/index'
-      expect(response).to be_successful
+ RSpec.describe UsersController, type: :controller do
+  describe "GET #index" do
+    it "assigns all users to @users" do
+      user1 = User.create(name: "John")
+      user2 = User.create(name: "Jane")
+       get :index
+      expect(assigns(:users)).to eq([user1, user2])
     end
-
-    it 'renders the correct template' do
-      get '/users'
-      expect(response).to render_template('index')
-    end
-
-    it 'should include correct placeholder' do
-      get '/users'
-      expect(response.body).to include('<h1>user index</h1>')
+     it "renders the index template" do
+      get :index
+      expect(response).to render_template(:index)
     end
   end
-
-  context 'GET /show' do
-    it 'returns http success' do
-      get '/users/show'
-      expect(response).to be_successful
+   describe "GET #show" do
+    it "assigns the requested user to @user" do
+      user = User.create(name: "John")
+       get :show, params: { id: user.id }
+      expect(assigns(:user)).to eq(user)
     end
-
-    it 'renders the correct template' do
-      get '/users/show'
-      expect(response).to render_template('show')
-    end
-
-    it 'should include correct placeholder' do
-      get '/users/show'
-      expect(response.body).to include('<h1>show user</h1>')
+     it "renders the show template" do
+      user = User.create(name: "John")
+       get :show, params: { id: user.id }
+      expect(response).to render_template(:show)
     end
   end
 end
