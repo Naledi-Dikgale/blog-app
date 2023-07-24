@@ -1,37 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :request do
+  before(:each) do
+    @user = User.create!(name: 'Naledi Dikgale')
+    @post = @user.posts.create!(title: 'Test Post', text: 'This is a test post.')
+  end
+
   context 'GET /index' do
     it 'should return http success' do
-      get '/users/1/posts/1'
+      get user_posts_path(@user)
       expect(response).to be_successful
     end
 
     it 'should render correct template' do
-      get '/users/1/posts'
+      get user_posts_path(@user)
       expect(response).to render_template('index')
-    end
-
-    it 'shold include correct placeholder' do
-      get '/users/1/posts'
-      expect(response.body).to include('<h1>post index</h1>')
     end
   end
 
   context 'GET /show' do
     it 'should return http success' do
-      get '/users/1/posts/1'
+      get user_post_path(@user, @post)
       expect(response).to be_successful
     end
 
     it 'should render correct template' do
-      get '/users/1/posts/1'
+      get user_post_path(@user, @post)
       expect(response).to render_template('show')
-    end
-
-    it 'should include correct placeholder' do
-      get '/users/1/posts/1'
-      expect(response.body).to include('<h1>show post</h1>')
     end
   end
 end
