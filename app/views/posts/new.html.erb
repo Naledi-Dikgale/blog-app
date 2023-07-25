@@ -1,18 +1,18 @@
-<div>
-  <h2>Create a post</h2>
+<div class= "post-form">
+  <h2 class= "create-post">Create a post</h2>
 
   <%= form_with model: @post, url: user_posts_path(@user) do |f| %>
-    <div>
+    <div class= "title-input">
       <%= f.label :title %>
       <%= f.text_field :title, required: true %>
     </div>
 
-    <div>
+    <div class= "comment-input">
       <%= f.label :text %>
       <%= f.text_field :text, required: true %>
     </div>
 
-    <div>
+    <div class= "submit">
       <%= f.submit "Submit" %>
     </div>
   <% end %>
