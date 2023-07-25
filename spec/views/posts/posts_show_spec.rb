@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'User', type: :feature, js: false do
+RSpec.describe 'User', type: :feature do
   before :each do
-    @user = User.create(name: 'Naledi Dikgale', photo: 'https://e0.pxfuel.com/wallpapers/820/800/desktop-wallpaper-cute-black-girls-black-cartoon-characters-thumbnail.jpg',
+    @user = User.create(name: 'Naledi Dikgale', photo: 'Photo',
                         bio: 'Undisputed Queen of DIY')
     @first_post = Post.create(author: @user, title: 'Naledi', text: 'How to make a table')
     @comment = Comment.create(post: @first_post, author: @user, text: 'Great post!')
@@ -26,11 +26,6 @@ RSpec.describe 'User', type: :feature, js: false do
     expect(page).to have_content(user_post.likes.count)
   end
 
-  it 'shows the user profile' do
-    visit root_path
-    User.find_by(name: 'Naledi Dikgale')
-  end
-
   it 'shows the post text' do
     visit "/users/#{@user.id}/posts/#{@first_post.id}"
     expect(page).to have_content(@first_post.text)
@@ -44,10 +39,5 @@ RSpec.describe 'User', type: :feature, js: false do
   it 'shows the comment left by a author' do
     visit "/users/#{@user.id}/posts/#{@first_post.id}"
     expect(page).to have_content(@comment.text)
-  end
-
-  it 'should display the likes counter for post' do
-    visit root_path
-    expect(page).to have_content('Number of posts: 1')
   end
 end

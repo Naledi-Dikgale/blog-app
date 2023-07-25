@@ -2,6 +2,11 @@
     <div class="users"> 
         <%= render 'shared/user', user:@user %>
     </div>
+
+    <div>
+    <%= @user.bio%>
+    </div>
+
     <div class="posts">
         <h2>Recent Posts</h2>
         <% @recent_posts.each do |post| %>
