@@ -12,7 +12,6 @@ RSpec.describe 'posts', type: :feature do
       @comment5 = Comment.create(text: 'Good post!', author_id: @user.id, post_id: @post4.id)
       @comment6 = Comment.create(text: 'Awesome stuff', author_id: @user.id, post_id: @post4.id)
 
-
       visit user_posts_path(@user)
     end
     it 'displays user information' do
