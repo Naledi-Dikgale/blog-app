@@ -40,5 +40,10 @@ RSpec.describe 'User', type: :feature, js: false do
       expect(page).to have_content(user_post.comments.count)
       expect(page).to have_content(user_post.likes.count)
     end
+
+    it 'redirects to the post page when the post title is clicked' do
+      click_link 'Naledi Dikgale'
+      expect(page).to have_content('How to make a table')
+    end
   end
 end

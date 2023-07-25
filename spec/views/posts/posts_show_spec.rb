@@ -26,6 +26,11 @@ RSpec.describe 'User', type: :feature, js: false do
     expect(page).to have_content(user_post.likes.count)
   end
 
+  it 'shows the user profile' do
+    visit root_path
+    User.find_by(name: 'Naledi Dikgale')
+  end
+
   it 'shows the post text' do
     visit "/users/#{@user.id}/posts/#{@first_post.id}"
     expect(page).to have_content(@first_post.text)
@@ -39,5 +44,10 @@ RSpec.describe 'User', type: :feature, js: false do
   it 'shows the comment left by a author' do
     visit "/users/#{@user.id}/posts/#{@first_post.id}"
     expect(page).to have_content(@comment.text)
+  end
+
+  it 'should display the likes counter for post' do
+    visit root_path
+    expect(page).to have_content('Number of posts: 1')
   end
 end
