@@ -64,11 +64,14 @@ group :development do
   # gem "spring"
 end
 
+gem 'devise'
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+gem 'letter_opener'
 gem 'rails-controller-testing'
 gem 'rubocop', '>= 1.0', '< 2.0'
