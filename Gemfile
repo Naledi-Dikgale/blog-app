@@ -72,6 +72,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+gem 'cancancan'
 gem 'letter_opener'
 gem 'rails-controller-testing'
 gem 'rubocop', '>= 1.0', '< 2.0'
