@@ -16,6 +16,11 @@
         <%= form_with url: user_post_likes_path(post.author.id, post.id) do |form| %>
           <%= form.submit 'Like' %>
         <% end %>
+
+      <% if can?(:destroy, @post) %>
+        <%= button_to 'Delete Post', user_post_path(@post.author, @post), method: :delete, data: { confirm: 'Are you sure you want to delete this post?' }, class: 'delete-button' %>
+      <% end %>
+
       </div>
 
       <% if post.five_most_recent_comments.present? %>

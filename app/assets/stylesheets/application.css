@@ -194,6 +194,15 @@
   margin-top: 100px;
 }
 
+/* .field {
+  width: 40vw;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+} */
+
 .input-field {
   width: 40vw;
   padding: 10px;
@@ -204,12 +213,13 @@
 }
 
 .login-button {
-  width: 40vw;
+  width: 42vw;
   padding: 10px;
   font-size: 16px;
   background-color: #007bff;
   color: #fff;
   border: none;
+  margin: 0 auto;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

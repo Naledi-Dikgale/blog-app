@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   def new
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
@@ -19,15 +20,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @commentdel = Comment.includes(:post).find(params[:id])
-    @post = @commentdel.post
-
-    if @commentdel.destroy
-      flash[:notice] = 'Comment deleted!'
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    if @comment.destroy
+      redirect_to user_post_path(@user, @post), notice: 'Comment deleted!'
     else
-      flash.now[:errors] = 'Unable to delete comment!'
+      redirect_to user_post_path(@user, @post), alert: 'OOPSY Daisy!'
     end
-    redirect_to user_post_path(@post.author, @post)
   end
 
   private
